@@ -1,11 +1,12 @@
 import styles from "./Track.module.css";
 
-export default function Track() {
+export default function Track({ name, artist, album }) {
   return (
     <>
-      <form>
-        <button type="submit">Save To Spotify</button>
-      </form>
+      <h3>{name}</h3>
+      <p>
+        {artist} | {album}
+      </p>
     </>
   );
 }
