@@ -5,7 +5,7 @@ import Track from "../Track/Track";
 import Tracklist from "../Tracklist/Tracklist";
 import { useState } from "react";
 import SearchResults from "../SearchResults/SearchResults";
-import tracks from "../assets/songdatatest/songDataTest";
+import tracks from "../assets/js/test/songData";
 
 function App() {
   const [currentSearch, setCurrentSearch] = useState("");
