@@ -1,16 +1,18 @@
 import styles from "./SearchResults.module.css";
 import Tracklist from "../Tracklist/Tracklist";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { searchTracks } from "../assets/js/api";
 
-export default function SearchResults({ query, hasSearched, onAddToPlaylist }) {
+export default function SearchResults({ query, onAddToPlaylist }) {
   const [results, setResults] = useState([]);
   const [isError, setIsError] = useState(false);
+
+  const isQueryEmpty = useMemo(() => query.trim() === "", [query]);
 
   useEffect(() => {
     let abortController = new AbortController();
     (async () => {
-      if (!hasSearched) {
+      if (isQueryEmpty) {
         setResults([]);
         setIsError(false);
         return;
@@ -22,11 +24,13 @@ export default function SearchResults({ query, hasSearched, onAddToPlaylist }) {
     })();
 
     return () => abortController.abort();
-  }, [query]);
+  }, [query, isQueryEmpty]);
 
   return (
     <section>
-      {isError ? (
+      {isQueryEmpty ? (
+        <p>Enter the name of a track to start Jamming.</p>
+      ) : isError ? (
         <p>An error occurred, please try again.</p>
       ) : (
         <Tracklist

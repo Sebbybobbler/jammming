@@ -6,7 +6,6 @@ import Playlist from "../Playlist/Playlist";
 
 function App() {
   const [currentSearch, setCurrentSearch] = useState("");
-  const [hasSearched, setHasSearched] = useState(false);
   const [playlistItems, setPlaylistItems] = useState([]);
 
   return (
@@ -14,7 +13,6 @@ function App() {
       <SearchBar onSubmit={handleSearchSubmit} />
       <SearchResults
         query={currentSearch}
-        hasSearched={hasSearched}
         onAddToPlaylist={handleAddToPlaylist}
       />
       <Playlist
@@ -26,7 +24,6 @@ function App() {
 
   function handleSearchSubmit(query) {
     setCurrentSearch(query);
-    setHasSearched(true);
   }
   function handleAddToPlaylist(track) {
     setPlaylistItems((nextPlaylistItems) => [...nextPlaylistItems, track]);
