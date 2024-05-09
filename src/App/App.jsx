@@ -11,14 +11,16 @@ function App() {
   return (
     <div className="App">
       <SearchBar onSubmit={handleSearchSubmit} />
-      <SearchResults
-        query={currentSearch}
-        onAddToPlaylist={handleAddToPlaylist}
-      />
-      <Playlist
-        tracks={playlistItems}
-        onRemoveFromPlaylist={handleRemoveFromPlaylist}
-      />
+      <div className="results-and-playlist">
+        <SearchResults
+          query={currentSearch}
+          onAddToPlaylist={handleAddToPlaylist}
+        />
+        <Playlist
+          tracks={playlistItems}
+          onRemoveFromPlaylist={handleRemoveFromPlaylist}
+        />
+      </div>
     </div>
   );
 

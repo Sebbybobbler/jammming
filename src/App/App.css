@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.results-and-playlist {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  min-height: 500px;
+}
+
+section {
+  background-color: rgba(10, 10, 10, 0.8);
+  color: #efefef;
+  padding: 20px;
+}

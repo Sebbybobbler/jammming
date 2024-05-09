@@ -1,4 +1,5 @@
 import Tracklist from "../Tracklist/Tracklist";
+import { savePlaylist } from "../assets/js/api";
 import styles from "./Playlist.module.css";
 
 export default function Playlist({ tracks, onRemoveFromPlaylist }) {
@@ -9,11 +10,16 @@ export default function Playlist({ tracks, onRemoveFromPlaylist }) {
         displayAsPlus={false}
         onButtonClick={handleTrackClick}
       />
-      <button type="button">Save To Spotify</button>
+      <button type="button" onClick={handleSaveToSpotify}>
+        Save To Spotify
+      </button>
     </section>
   );
 
   function handleTrackClick(id) {
     onRemoveFromPlaylist?.(tracks[id].id);
+  }
+  function handleSaveToSpotify() {
+    savePlaylist("Test", tracks);
   }
 }

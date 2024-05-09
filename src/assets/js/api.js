@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN } from "./secrets";
+import { ACCESS_TOKEN, USERNAME } from "./secrets";
 
 export async function searchTracks(query, signal) {
   const urlObj = new URL("https://api.spotify.com/v1/search");
@@ -32,4 +32,20 @@ export async function searchTracks(query, signal) {
     artist: item.artists[0].name,
     id: item.id,
   }));
+}
+
+export async function savePlaylist(name, trackIDs) {
+  const res = await fetch(
+    `https://api.spotify.com/v1/users/${USERNAME}/playlists`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    }
+  );
+  console.log(await res.text());
 }
