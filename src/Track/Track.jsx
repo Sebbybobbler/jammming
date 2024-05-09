@@ -1,6 +1,12 @@
 import styles from "./Track.module.css";
 
-export default function Track({ name, artist, album, displayAsPlus }) {
+export default function Track({
+  name,
+  artist,
+  album,
+  displayAsPlus,
+  onButtonClick,
+}) {
   return (
     <>
       <h3>{name}</h3>
@@ -8,7 +14,9 @@ export default function Track({ name, artist, album, displayAsPlus }) {
         <span>
           {artist} | {album}
         </span>
-        <button type="button">{displayAsPlus ? "+" : "-"}</button>
+        <button type="button" onClick={onButtonClick}>
+          {displayAsPlus ? "+" : "-"}
+        </button>
       </div>
     </>
   );

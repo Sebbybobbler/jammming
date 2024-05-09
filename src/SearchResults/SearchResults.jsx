@@ -3,7 +3,7 @@ import Tracklist from "../Tracklist/Tracklist";
 import { useEffect, useState } from "react";
 import { searchTracks } from "../assets/js/api";
 
-export default function SearchResults({ query, hasSearched }) {
+export default function SearchResults({ query, hasSearched, onAddToPlaylist }) {
   const [results, setResults] = useState([]);
   const [isError, setIsError] = useState(false);
 
@@ -29,8 +29,16 @@ export default function SearchResults({ query, hasSearched }) {
       {isError ? (
         <p>An error occurred, please try again.</p>
       ) : (
-        <Tracklist tracks={results} displayAsPlus={true} />
+        <Tracklist
+          tracks={results}
+          displayAsPlus={true}
+          onButtonClick={handleTrackClick}
+        />
       )}
     </section>
   );
+
+  function handleTrackClick(id) {
+    onAddToPlaylist?.(results[id]);
+  }
 }

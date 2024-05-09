@@ -30,5 +30,6 @@ export async function searchTracks(query, signal) {
     name: item.name,
     album: item.album.name,
     artist: item.artists[0].name,
+    id: item.id,
   }));
 }
